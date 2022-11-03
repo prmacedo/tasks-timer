@@ -21,9 +21,13 @@ export function Item({ time, task, selected, finished, id }: ITask) {
   const { setSelectedTask } = useTasks();
 
   return (
-    <li className={`${style.item} ${selected ? style.itemSelecionado : finished ? style.itemCompletado : ''}`} onClick={() => !finished && setSelectedTask({ time, task, selected, finished, id })}>
+    <li className={`${style.item} ${selected ? style.itemSelecionado : ''} ${ finished ? style.itemCompletado : '' }`} onClick={() => !finished && setSelectedTask({ time, task, selected, finished, id })}>
       <h3>{ task }</h3>
       <span>{ time }</span>
+      {
+        finished &&
+        <span className={style.concluido}></span>
+      }
     </li>
   )
 }
